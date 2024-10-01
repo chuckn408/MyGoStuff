@@ -1,0 +1,25 @@
+package main
+
+import (
+	"SomeProject/greetings"
+	"fmt"
+	"log"
+)
+
+func main() {
+	// Set properties of the predefined Logger, including the log entry prefix and a flag to disable
+	// printing the time, source and line
+	// old ::fmt.Println("hello, world!")
+	log.SetPrefix("greetings: ")
+	log.SetFlags(0)
+
+	// Request a greeting message.
+	message, err := greetings.Hello("")
+	//If an err was returned, pritn to cnsl and exit prg
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// If no error was reeturned, print the returned msg to cnsl
+	fmt.Println(message)
+}
