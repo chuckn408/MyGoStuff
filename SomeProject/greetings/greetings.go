@@ -3,33 +3,44 @@ package greetings
 import (
 	"errors"
 	"fmt"
-	"regexp"
-	"testing"
+	"math/rand"
 )
 
-// TestHelloName calls greetings.Hello with a name, checking vald ret val
-func TestHelloName(t *testing.T) {
-	name := "Gladys"
-	want := regexp.MustCompile(`\b` + name + `\b`)
-	msg, err := Hello("Gladys")
-	if !want.MatchString(msg) || err != nil {
-		t.Fatalf(`Hello("Gladys") = %q, %v, want match for %q, nil`, msg, err, want)
-	}
-}
-
-// TestHelloEmpty calls greetings.Hello with an empty string, checking for an error.
-func TestHelloEmpty(t *testing.T) {
-	msg, err := Hello("")
-	if msg != "" || err == nil {
-		t.Fatalf(`Hello("") = %q, %v, want "", error`, msg, err)
-	}
-}
-
+// Hello returns a greet for named person
 func Hello(name string) (string, error) {
+	// If no name was given, return an error with a message.
 	if name == "" {
-		return name, errors.New("name is empty")
+		return name, errors.New("empty name")
+	}
+	// Create a message using a random format.
+	message := fmt.Sprintf(randomFormat(), name)
+	return message, nil
+}
+
+// Hellos return a map that associates each named w/ a msg
+func Hellos(names []string) (map[string]string, error) {
+	messages := make(map[string]string)
+	// Loop through the received slice of names, calliing the Hel func to get msg for ea name
+	for _, name := range names {
+		message, err := Hello(name)
+		if err != nil {
+			return nil, err
+		}
+		// In map, assoc the retrieve msg w/ name.
+		messages[name] = message
+	}
+	return messages, nil
+}
+
+// randomFormat returns one of a set of greet msgs. Retrn msg is rand
+func randomFormat() string {
+	// A slice of msg frmts
+	formats := []string{
+		"Hi, %v. Welcome!",
+		"Great to see you, %v!",
+		"Hail, %v! Well met!",
 	}
 
-	message := fmt.Sprintf(randomFormat())
-	return message, nil
+	// Rtrn one of the msg frmt sel at rndm.
+	return formats[rand.Intn(len(formats))]
 }
