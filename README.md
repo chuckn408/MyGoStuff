@@ -15,3 +15,9 @@ and
 https://threedots.tech/post/making-games-in-go/
 
 https://github.com/ProtonMail/gopenpgp?tab=readme-ov-file#examples
+
+endgame:::
+
+port C++ wallet to Go
+
+https://developer.trustwallet.com/developer/wallet-core
