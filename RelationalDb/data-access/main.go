@@ -15,8 +15,8 @@ func main() {
 	// Capture connection properties.
 	cfg := mysql.Config{
 		// this user requires mysql native password authentication
-		User:   "msi/holly",
-		Passwd: "2DarK2SeeU",
+		User:   "derp",
+		Passwd: "perd",
 		Net:    "tcp",
 		Addr:   "127.0.0.1:3306",
 		DBName: "recordings",
