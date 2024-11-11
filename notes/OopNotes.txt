@@ -18,3 +18,13 @@ func (u *User) SayHello() {
 ```
 
 Here, `SayHello` is a method of `User`, but it's defined as a function with a receiver `u *User`. This can be initially confusing for those used to OOP concepts.
+#############################################################################################################################################################################################################################################################
+#############################################################################################################################################################################################################################################################
+
+-- learn to use 'div' effectively
+--  learn goroutines thouroughly 
+--  learn channels, mutex, etc
+https://www.freecodecamp.org/news/how-to-handle-concurrency-in-go/
+https://softchris.github.io/golang-book/05-misc/04-goroutines/
+https://notes.shichao.io/gopl/ch8/
+for pics::   https://medium.com/nerd-for-tech/learning-go-concurrency-goroutines-channels-8836b3c34152
