@@ -8,7 +8,13 @@ https://go.dev/doc/tutorial/
 
 Eventually::
 
-https://www.educative.io/blog/go-card-game-tutorial
+https://www.educative.io/blog/go-card-game-tutorial  ### this didn't turn out as expected
+
+https://threedots.tech/post/making-games-in-go/
+
+https://www.littlehackers.jp/en/courses/golang/flappy_go
+
+https://betterprogramming.pub/build-a-snake-game-using-in-go-b4186e21d011
 
 and
 
