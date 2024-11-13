@@ -12,9 +12,7 @@ https://www.educative.io/blog/go-card-game-tutorial  ### this didn't turn out as
 
 https://threedots.tech/post/making-games-in-go/
 
-https://www.littlehackers.jp/en/courses/golang/flappy_go
-
-https://betterprogramming.pub/build-a-snake-game-using-in-go-b4186e21d011
+https://betterprogramming.pub/build-a-snake-game-using-in-go-b4186e21d011  ###  straightforward enough; need to experiment though
 
 and
 
