@@ -16,8 +16,6 @@ https://betterprogramming.pub/build-a-snake-game-using-in-go-b4186e21d011  ###  
 
 and
 
-https://threedots.tech/post/making-games-in-go/
-
 https://github.com/ProtonMail/gopenpgp?tab=readme-ov-file#examples
 
 endgame:::
