@@ -4,6 +4,7 @@ import (
 		"image"
 		 _ "image/png"
 		 "math"
+		 "time"
 		"github.com/hajimehoshi/ebiten/v2"
 )
 
@@ -38,8 +39,8 @@ type Game struct {
 }
 
 func (g *Game) Update() error {
-
 	speed := 5.0
+
 	// g.playerPosition.X += speed
 	
 	if ebiten.IsKeyPressed(ebiten.KeyDown) {
@@ -84,6 +85,32 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	screen.DrawImage(PlayerSprite, op)
 }
 
+type Timer struct {
+	currentTicks int
+	targetTicks	int
+}
+
+func NewTimer(d time.Duration) *Timer {
+	return &Timer{
+		currentTicks: 0,
+		targetTicks: int(d.Milliseconds()) * ebiten.TPS() / 1000,
+	}
+}
+
+func (t *Timer) Update() {
+	if t.currentTicks < t.targetTicks {
+		t.currentTicks++
+	}
+}
+
+func (t *Timer) IsReady() bool {
+	return t.currentTicks >= t.targetTicks
+}
+
+func (t *Timer) Reset() {
+	t.currentTicks = 0
+}
+
 // draw the sccreen here- pretty simple
 func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
 	return outsideWidth, outsideHeight
@@ -92,8 +119,10 @@ func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeigh
 func main() {
 	g := &Game{
 		playerPosition: Vector{X: 100, Y: 100},
+//attackTimer: NewTimer(5 * time.Second),
+
 	}
-	
+		
 	err := ebiten.RunGame(g)
 	if err != nil {
 		panic(err)
