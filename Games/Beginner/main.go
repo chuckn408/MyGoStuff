@@ -1,12 +1,13 @@
 package main
 
 import (
-		"embed"
 		"image"
-		_ "image/png"
+		 _ "image/png"
 		"github.com/hajimehoshi/ebiten/v2"
 )
 
+import "embed"
+//go:embed assets/*
 var assets embed.FS
 
 var PlayerSprite = mustLoadImage("assets/player.png")
