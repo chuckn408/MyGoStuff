@@ -1,5 +1,7 @@
 package main
 
+import "math/rand"
+
 type Part struct {
 	X int
 	Y int
@@ -9,6 +11,7 @@ type SnakeBody struct {
 	Parts  []Part
 	Xspeed int
 	Yspeed int
+	newColor string
 }
 
 func (sb *SnakeBody) ChangeDir(vertical int, horizontal int) {
@@ -21,6 +24,25 @@ func (sb *SnakeBody) Update(width int, height int, longerSnake bool) {
 	if !longerSnake {
 		sb.Parts = sb.Parts[1:]
 	}
+}
+
+func (sb *SnakeBody) RndClr(g.Score) {
+
+	colorPikr := (g.Score / (rand.Intn))
+/*	switch chgColor := runtime.GOOS; {
+	default:
+		sb.newColor := "Black"
+	case colorPikr = 1: 
+		sb.newColor = "Red"
+	case colorPikr = 2:
+		sb.newColor := "Blue"
+	case colorPikr = 3:
+		sb.newColor := "Green"
+	case colorPikr = 4: 
+		sb.newColor := "White"
+	sb.newColor 
+	}*/
+	Println("Color is ", colorPikr)
 }
 
 func (sb *SnakeBody) ResetPos(width int, height int) {
@@ -53,5 +75,6 @@ func (sp *Part) GetUpdatedPart(sb *SnakeBody, width int, height int) Part {
 	if newPart.Y < 0 {
 		newPart.Y += height
 	}
+	RndClr()
 	return newPart
 }

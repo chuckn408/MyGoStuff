@@ -58,14 +58,16 @@ func (g *Game) UpdateFoodPos(width int, height int) {
 }
 
 func (g *Game) Run() {
-	defStyle := tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorWhite)
+	defStyle := tcell.StyleDefault.Background(tcell.ColorGreen).Foreground(tcell.ColorWhite)
 	g.Screen.SetStyle(defStyle)
 	width, height := g.Screen.Size()
 	g.snakeBody.ResetPos(width, height)
 	g.UpdateFoodPos(width, height)
 	g.GameOver = false
 	g.Score = 0
-	snakeStyle := tcell.StyleDefault.Background(tcell.ColorWhite).Foreground(tcell.ColorWhite)
+	g.snakeClr.RndClr(g.Score)	
+	
+	snakeStyle := tcell.StyleDefault.Background(tcell.Color(g.snakeClr)).Foreground(tcell.ColorWhite)
 	for {
 		longerSnake := false
 		g.Screen.Clear()

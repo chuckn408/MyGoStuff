@@ -1,0 +1,4 @@
+tutorial
+https://golangbot.com/channels/
+
+review func syntax  <-- parameters

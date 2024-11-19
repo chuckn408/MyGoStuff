@@ -1,0 +1,14 @@
+this was straightforward enough... having visual reps
+like in prev examples helped a lot and reminded me
+of some sims i played on steam
+
+This program will first print Main going to call
+ hello go goroutine. Then the hello Goroutine will 
+be started and it will print hello go routine is 
+going to sleep. After this is printed, the hello 
+Goroutine will sleep for 4 seconds and during this
+ time main Goroutine will be blocked since it is 
+waiting for data from the done channel in line no.
+ 18 <-done. After 4 seconds hello go routine awake
+ and going to write to done will be printed 
+followed by Main received data.
