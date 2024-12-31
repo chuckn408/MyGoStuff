@@ -3,13 +3,13 @@ package main
 import (
 		"image"
 		 _ "image/png"
-		 "math"
+		_ "math"
 		 "time"
 		"github.com/hajimehoshi/ebiten/v2"
+		"embed"
 )
 
 // although comments start the same as in this one, the below comment actually is read and executed
-import "embed"
 //go:embed assets/*
 var assets embed.FS
 var PlayerSprite = mustLoadImage("assets/player.png")
@@ -67,13 +67,12 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	halfW := float64(width / 2)
 	halfH := float64(height / 2)
 
-	op := &ebiten.DrawImageOptions{}
 	//op.GeoM.Translate(150, 200)   // coord location
-	// op.GeoM.Scale(1, -1)
 	op.GeoM.Scale(1, 1)  // scaling ; neg vals dont work it seems
 	op.GeoM.Translate(g.playerPosition.X, g.playerPosition.Y)
-	// op.GeoM.Translate(-halfW, -halfH)
-	op.GeoM.Rotate(45.0 * math.Pi / 180.0)  // angles
+
+	op.GeoM.Translate(-halfW, -halfH)
+	// op.GeoM.Rotate(45.0 * math.Pi / 180.0)  // angles
 	op.GeoM.Translate(halfW, halfH)
 	
 	// playing with colours
@@ -82,6 +81,8 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	//cm.Scale(1.0, 1.0, 1.0, 0.5)
 	//colorm.DrawImage(screen, PlayerSprite, cm, op)
 	
+	op := &ebiten.DrawImageOptions{}
+	op.GeoM.Translate(g.playerPosition.X, g.playerPosition.Y)
 	screen.DrawImage(PlayerSprite, op)
 }
 
@@ -98,6 +99,11 @@ func NewTimer(d time.Duration) *Timer {
 }
 
 func (t *Timer) Update() {
+	
+	g := &Game{
+	playerPosition: Vector{X: 100, Y: 100},
+	}
+	
 	if t.currentTicks < t.targetTicks {
 		t.currentTicks++
 	}

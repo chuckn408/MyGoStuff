@@ -12,7 +12,7 @@ import (
 import "embed"
 //go:embed assets/*
 var assets embed.FS
-var PlayerSprite = mustLoadImage("assets/images/3DNS.png")
+var PlayerSprite = mustLoadImage("assets/fly.png")
 
 func mustLoadImage(name string) *ebiten.Image {
 	f, err := assets.Open(name)
@@ -64,8 +64,8 @@ func (g *Game) Draw(screen *ebiten.Image) {
 
 	width := PlayerSprite.Bounds().Dx()
 	height := PlayerSprite.Bounds().Dy()
-	halfW := float64(width / 2)
-	halfH := float64(height / 2)
+	halfW := float64(width / 4)
+	halfH := float64(height / 4)
 
 	op := &ebiten.DrawImageOptions{}
 	//op.GeoM.Translate(150, 200)   // coord location
