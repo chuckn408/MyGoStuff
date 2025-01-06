@@ -4,11 +4,15 @@ import (
 	"fmt"
 	"image/color"
 	"time"
+	
+	 "image/png"
+ 	"os"
 
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/text"
 
 	"github.com/ThreeDotsLabs/meteors/assets"
+	"github.com/kbinani/screenshot"
 )
 
 const (
@@ -83,8 +87,27 @@ func (g *Game) Update() error {
 	}
 
 	// Check for meteor/player collisions
+	n := screenshot.NumActiveDisplays()
 	for _, m := range g.meteors {
 		if m.Collider().Intersects(g.player.Collider()) {
+
+
+			for i := 0; i < n; i++ {
+					bounds := screenshot.GetDisplayBounds(i)
+				img, err := screenshot.CaptureRect(bounds)
+				if err != nil {
+					panic(err)
+				}
+				fileName := fmt.Sprintf("%d_%dx%d.png", i, bounds.Dx(), bounds.Dy())
+				file, _ := os.Create(fileName)
+				defer file.Close()
+				png.Encode(file, img)
+
+				fmt.Printf("#%d : %v \"%s\"\n", i, bounds, fileName)
+				// <----- some call to a erc721 go script here <-----------------------------------
+			}
+
+
 			g.Reset()
 			break
 		}
